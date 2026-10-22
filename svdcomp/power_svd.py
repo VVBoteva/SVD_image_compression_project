@@ -67,6 +67,8 @@ def dominant_triplet(A: np.ndarray, tol: float = 1e-10, max_iter: int = 5000,
     n = A.shape[1]
     v = rng.standard_normal(n) if v0 is None else np.array(v0, dtype=float)
     v = _project_out(v, V_prev)
+    while np.linalg.norm(v) < 1e-12:  # start vector inside span(V_prev): draw a new one
+        v = _project_out(rng.standard_normal(n), V_prev)
     v /= np.linalg.norm(v)
 
     converged = False

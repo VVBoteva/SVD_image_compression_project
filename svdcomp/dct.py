@@ -101,7 +101,8 @@ def dct_compress_image(image: np.ndarray, budget: int, mode: str = "threshold",
     """Compress a gray/RGB image with roughly ``budget`` stored values **per channel**.
 
     ``mode="threshold"``: keep ``budget // 2`` coefficients per channel.
-    ``mode="zonal"``: use the largest ``c`` with ``c * blocks <= budget``.
+    ``mode="zonal"``: use the largest ``c`` with ``c * blocks <= budget`` (at least 1,
+    so a budget below one value per block is exceeded; the true cost is returned).
     Returns ``(approximation, total_stored_values)``.
     """
     outs, total = [], 0

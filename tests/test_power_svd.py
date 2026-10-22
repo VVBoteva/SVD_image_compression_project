@@ -60,3 +60,10 @@ def test_info_and_validation():
         power_svd(A, 9)
     with pytest.raises(ValueError):
         power_svd(A, 2, deflation="nope")
+
+
+def test_start_vector_in_previous_span_is_replaced():
+    A = matrix_with_spectrum(10, 6, np.array([3.0, 2.0, 1.0]))
+    V_prev = np.eye(6)[:, :1]
+    *_, ok = dominant_triplet(A, v0=V_prev[:, 0], V_prev=V_prev, rng=np.random.default_rng(0))
+    assert ok

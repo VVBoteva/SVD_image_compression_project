@@ -32,8 +32,8 @@ Methods implemented and compared:
 
 * **Eckart–Young verified.** The measured errors ‖A − A_k‖₂ and ‖A − A_k‖_F match σ_{k+1} and
   √(Σ_{i>k} σᵢ²) to about 10⁻¹⁴. No competing rank-k approximation beats the truncated SVD.
-* **Compressibility = singular value decay.** A checkerboard is exact at k = 2 (64×). A photo reaches
-  ≈ 29 dB PSNR at 5× and ≈ 33 dB at 2.6×. Random noise cannot be compressed at all.
+* **Compressibility = singular value decay.** A checkerboard is exact at k = 2 (64×). The photos reach
+  27–29 dB PSNR at 5× and ≈ 33 dB at 2.6×. Random noise cannot be compressed at all.
 * **Own SVD (power iteration)** matches NumPy to about 10⁻¹⁵. Its iteration count follows the
   predicted ln ε / (2 ln(σ_{j+1}/σ_j)), which makes it slow when singular values are close.
 * **Randomized SVD** (p = 10, q = 2) comes within 1% of the optimal error and is the fastest method

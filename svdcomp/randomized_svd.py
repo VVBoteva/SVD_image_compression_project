@@ -11,11 +11,12 @@ Algorithm
 4. Small SVD of ``B = Q^T A`` (size ``(k+p) x n``): ``B = U_B S V^T``.
 5. ``U = Q U_B``; keep the first k triplets.
 
-Expected error bound (Halko et al., Thm. 10.6, q = 0)::
+Expected error bound (Halko et al., Thm. 10.5, q = 0, k >= 2, p >= 2)::
 
     E ||A - Q Q^T A||_F <= (1 + k/(p-1))^{1/2} (sum_{j>k} sigma_j^2)^{1/2}
 
-i.e. within a small constant factor of the optimal Eckart-Young error.
+i.e. within a small constant factor of the optimal Eckart-Young error. Note that
+``Q Q^T A`` has rank ``k + p``; the rank-k truncation returned here is slightly worse.
 Cost: ``O(mn(k+p))`` instead of ``O(mn min(m,n))`` for a full SVD.
 """
 
